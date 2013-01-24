@@ -1,0 +1,41 @@
+<style>
+body { margin:0; padding:0; }
+#screenBox { margin:0 auto; width:1024px; height:768px; background:#000; }
+#loginBox { width:300px; height:380px; position:absolute; left:50%; top:50%; margin-left:-150px; margin-top:-190px; }
+#loginBox #numScreen { height:60px; border:1px solid #000; font-size: 50px; text-align:center; padding:10px 0; background-color:#FFF; }
+#loginBox #numPad { height:300px; background-color:#CCC; border:1px solid #000; border-top:none; }
+#loginBox #numPad #numButtons { width:246px; height:248px; position:absolute; left:50%; top:50%; margin-left:-123px; margin-top:-83px; }
+#loginBox #numPad #numButtons div { cursor:pointer; width:60px; height:40px; border:1px solid #FFF; background-color:#666; margin:0px; color:#FFF; font-size:36px; padding:10px; text-align:center; float:left;}
+.clear { clear:both; }
+</style>
+<script>
+function typeNum(digit){
+	var numScreen = document.getElementById('numScreen');
+	var numChars = numScreen.innerHTML
+	if(numChars.length < 10){
+		numScreen.innerHTML = numChars + '' + digit;	
+	}
+}
+function clearNum(){
+	document.getElementById('numScreen').innerHTML = "";
+}
+function backNum(){
+	var numScreen = document.getElementById('numScreen');
+	var numChars = numScreen.innerHTML
+	numScreen.innerHTML = numChars.substring(0,(numChars.length - 1));	
+}
+</script>
+<div id="screenBox">
+	<div id="loginBox">
+		<div id="numScreen"></div>
+		<div id="numPad">
+			<div id="numButtons">
+				<div onclick="typeNum(1);">1</div><div onclick="typeNum(2);">2</div><div onclick="typeNum(3);">3</div>
+				<div onclick="typeNum(4);">4</div><div onclick="typeNum(5);">5</div><div onclick="typeNum(6);">6</div>
+				<div onclick="typeNum(7);">7</div><div onclick="typeNum(8);">8</div><div onclick="typeNum(9);">9</div>
+				<div onclick="clearNum(1);">C</div><div onclick="typeNum(0);">0</div><div onclick="backNum();">&larr;</div>
+				<br class="clear">
+			</div>
+		</div>
+	</div>
+</div>
